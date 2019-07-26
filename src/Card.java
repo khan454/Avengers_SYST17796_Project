@@ -39,6 +39,6 @@ public class Card {
 
     @Override
     public String toString() {
-        return color.code + value.code;
+        return "[" + color.code + value.code + "]";
     }
 }
