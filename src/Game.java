@@ -50,7 +50,7 @@ public class Game {
     }
 
     public void play() {
-
+        stack.createStack();
     }
 
     public void showWinner() {
