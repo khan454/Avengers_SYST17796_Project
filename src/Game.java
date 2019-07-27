@@ -55,12 +55,15 @@ public class Game {
 
     public void play() {
         stack.createStack(); // create initial deck
-        System.out.println(stack);
+//        System.out.println(stack);
 
         Collections.shuffle(stack.deck); // shuffle the deck
+        System.out.println(stack);
 
         dealCards(); // deal the cards to the players
         System.out.println(stack.deck);
+
+        
     }
 
     public void showWinner() {
@@ -70,10 +73,8 @@ public class Game {
     public void dealCards() {
         for (Player player :
                 players) {
-//            System.out.println(player);
             for (int i = 0; i < 7; i++) {
                 player.getHand().add(stack.pop());
-//                System.out.println(stack.pop());
             }
 
             System.out.println(player.getHand());
