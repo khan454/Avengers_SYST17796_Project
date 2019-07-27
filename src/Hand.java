@@ -1,9 +1,14 @@
 import java.util.ArrayList;
 
-public class Hand extends GroupOfCards {
-    ArrayList deck = new ArrayList<Card>();
+public class Hand {
+    ArrayList<Card> deck = new ArrayList<>();
 
     // NEEDS REVISION
+
+    @Override
+    public String toString() {
+        return deck + "";
+    }
 
     /***
      *
@@ -30,5 +35,9 @@ public class Hand extends GroupOfCards {
             this.deck.remove(card);
             return true;
         }
+    }
+
+    public void add(Card card) {
+        deck.add(card);
     }
 }

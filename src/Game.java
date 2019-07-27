@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Game {
@@ -50,10 +51,29 @@ public class Game {
     }
 
     public void play() {
-        stack.createStack();
+        stack.createStack(); // create initial deck
+        System.out.println(stack);
+
+        Collections.shuffle(stack.deck); // shuffle the deck
+
+        dealCards(); // deal the cards to the players
+        System.out.println(stack.deck);
     }
 
     public void showWinner() {
 
+    }
+
+    public void dealCards() {
+        for (Player player :
+                players) {
+//            System.out.println(player);
+            for (int i = 0; i < 7; i++) {
+                player.getHand().add(stack.pop());
+//                System.out.println(stack.pop());
+            }
+
+            System.out.println(player.getHand());
+        }
     }
 }

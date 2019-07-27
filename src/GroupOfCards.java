@@ -1,10 +1,5 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Collection;
 
 public class GroupOfCards {
-    ArrayList<Card> deck;
-
-    public void shuffle() {
-        Collections.shuffle(deck);
-    }
+    Collection<Card> deck;
 }
