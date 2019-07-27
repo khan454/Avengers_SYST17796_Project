@@ -40,7 +40,10 @@ public class Game {
         System.out.println();
         input.nextLine(); // consumes the return character
 
-        int playerCount = 1;
+        System.out.print("Enter your name: ");
+        players.add(new Player(input.nextLine()));
+
+        int playerCount = 2;
         while(playerCount <= numOfPlayers) {
             System.out.print("Enter name of player " + playerCount + ": ");
             players.add(new Player(input.nextLine())); // creates new player and adds to the players list
