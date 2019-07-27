@@ -35,7 +35,7 @@ public class Game {
                 System.out.println("Number of players has to be between 2 and 6.");
                 System.out.print("How many players are playing this game? ");
             }
-        } while(numOfPlayers < 2 || numOfPlayers > 6 );
+        } while(numOfPlayers < 2 || numOfPlayers > 6);
 
         System.out.println();
         input.nextLine(); // consumes the return character
@@ -55,7 +55,6 @@ public class Game {
 
     public void play() {
         stack.createStack(); // create initial deck
-//        System.out.println(stack);
 
         Collections.shuffle(stack.deck); // shuffle the deck
         System.out.println(stack);
@@ -63,7 +62,9 @@ public class Game {
         dealCards(); // deal the cards to the players
         System.out.println(stack.deck);
 
-        
+        do {
+
+        } while (!gameover);
     }
 
     public void showWinner() {
