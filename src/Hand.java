@@ -7,7 +7,14 @@ public class Hand {
 
     @Override
     public String toString() {
-        return deck + "";
+        String output = "";
+        for (int i = 0; i < size(); i++) {
+            output += "  ";
+            output += (i + 1);
+            output += "  ,";
+        }
+        output += " \n";
+        return output + deck;
     }
 
     /***
@@ -28,13 +35,21 @@ public class Hand {
         int cardIndex = cardNumber - 1;
         Card card = (Card) deck.get(cardIndex);
 
+        if (!card.equals(stack.peek())) {
+            cardIndex = -1;
+        }
+
         if (cardIndex == -1) {
             return false;
         } else {
-            stack.deck.add(card);
+            stack.deck.add(0, card);
             this.deck.remove(card);
             return true;
         }
+    }
+
+    public int size() {
+        return this.deck.size();
     }
 
     public void add(Card card) {

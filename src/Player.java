@@ -7,8 +7,19 @@ public class Player {
         this.hand = new Hand();
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Hand getHand() {
         return hand;
+    }
+
+    public boolean isHandEmpty() {
+        if (this.getHand().size() == 0) {
+            return true;
+        }
+        return false;
     }
 
     @Override

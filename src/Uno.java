@@ -5,7 +5,5 @@ public class Uno {
         uno.askForPlayers();
 
         uno.play();
-
-        uno.showWinner();
     }
 }

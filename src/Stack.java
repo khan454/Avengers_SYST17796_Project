@@ -20,6 +20,17 @@ public class Stack {
         return deck.pop();
     }
 
+    public Card peek() {
+        return deck.peek();
+    }
+
+    public Card tail() {
+        int index = deck.size() - 1;
+        Card card = deck.get(index);
+        deck.remove(index);
+        return card;
+    }
+
     @Override
     public String toString() {
         return deck + "";

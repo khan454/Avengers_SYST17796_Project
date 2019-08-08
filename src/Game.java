@@ -18,7 +18,6 @@ public class Game {
 
     ArrayList<Player> players = new ArrayList<>();
     Stack stack = new Stack();
-    Player winner;
     boolean gameover = false;
 
     private void init() {}
@@ -57,18 +56,58 @@ public class Game {
         stack.createStack(); // create initial deck
 
         Collections.shuffle(stack.deck); // shuffle the deck
-        System.out.println(stack);
+//        System.out.println("Stack: " + stack);
 
         dealCards(); // deal the cards to the players
-        System.out.println(stack.deck);
+//        System.out.println(stack.deck);
+
+        boolean cardPlayed;
+        int cardIndex, playerIndex = 0;
+        Scanner input = new Scanner(System.in);
 
         do {
+            Player currentPlayer = players.get(playerIndex);
+            if (playerIndex == 0) {
+                System.out.println(stack.peek());
+                System.out.println(currentPlayer.getHand());
 
+                // ask for card
+                System.out.print("Pick a card by the corresponding number: ");
+                cardIndex = input.nextInt();
+//                System.out.println("Card Index: " + cardIndex);
+            } else {
+                System.out.println(stack.peek());
+                System.out.println(currentPlayer.getHand());
+
+                System.out.println("Player turn");
+                input.nextLine();
+                // play one of the other players
+                cardIndex = currentPlayer.getHand().matchWith(stack.peek());
+            }
+
+            cardPlayed = currentPlayer.getHand().playCardToStack(cardIndex, stack);
+            if (!cardPlayed) {
+                currentPlayer.getHand().add(stack.tail());
+            }
+
+            // check if hand is empty
+            if (currentPlayer.isHandEmpty()) {
+                gameover = true;
+                showWinner(currentPlayer, playerIndex);
+                break;
+            } else {
+                playerIndex++;
+                playerIndex %= players.size();
+            }
         } while (!gameover);
     }
 
-    public void showWinner() {
-
+    public void showWinner(Player player, int index) {
+        if (index == 0) {
+            System.out.println("You won the game!");
+        } else {
+            System.out.println(player.getName() + " won the game!");
+        }
     }
 
     public void dealCards() {
@@ -78,7 +117,7 @@ public class Game {
                 player.getHand().add(stack.pop());
             }
 
-            System.out.println(player.getHand());
+//            System.out.println(player.getName() + ": " + player.getHand());
         }
     }
 }

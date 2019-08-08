@@ -25,6 +25,7 @@ public class Card {
         this.value = value;
     }
 
+    @Override
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
