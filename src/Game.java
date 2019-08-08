@@ -74,6 +74,7 @@ public class Game {
         do {
             cardPlayed = false;
             Player currentPlayer = players.get(playerIndex);
+            System.out.println();
             System.out.println(currentPlayer.getHand() + " ==> " + stack.peek());
 
             if (playerIndex == 0) {

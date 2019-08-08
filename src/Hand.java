@@ -19,6 +19,7 @@ public class Hand {
         int index = 0;
         for (int i = 0; i < deck.size(); i++) {
             if (deck.get(i).equals(cardOnStack)) {
+                System.out.println();
                 System.out.println(deck.get(i) + " matches with " + cardOnStack);
                 index = i + 1;
                 break;
