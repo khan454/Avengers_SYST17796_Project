@@ -15,10 +15,10 @@ public class Card {
     };
 
     enum Value {
-        ZERO(0), ONE(1), TWO(2), THREE(3), FOUR(4), FIVE(5), SIX(6), SEVEN(7), EIGHT(8), NINE(9);
+        ZERO("0"), ONE("1"), TWO("2"), THREE("3"), FOUR("4"), FIVE("5"), SIX("6"), SEVEN("7"), EIGHT("8"), NINE("9"), WILDCARD("W");
 
-        final int code;
-        Value(int code) {
+        final String code;
+        Value(String code) {
             this.code = code;
         }
     };
@@ -46,7 +46,7 @@ public class Card {
 
         Card card = (Card) obj;
 
-        return (card.color == this.color || card.value == this.value);
+        return (card.color == this.color || card.value.equals(this.value) || this.value.equals(value.WILDCARD));
     }
 
     @Override
