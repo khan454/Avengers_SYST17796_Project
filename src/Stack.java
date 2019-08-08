@@ -13,12 +13,7 @@ public class Stack {
         });
     }
 
-    public Card pop() {
-//        Card card = (Card) deck.get(0);
-//        deck.remove(0);
-//        return card;
-        return deck.pop();
-    }
+    public Card pop() { return deck.pop(); }
 
     public Card peek() {
         return deck.peek();

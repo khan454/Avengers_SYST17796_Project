@@ -3,8 +3,6 @@ import java.util.ArrayList;
 public class Hand {
     ArrayList<Card> deck = new ArrayList<>();
 
-    // NEEDS REVISION
-
     @Override
     public String toString() {
         String output = "";
