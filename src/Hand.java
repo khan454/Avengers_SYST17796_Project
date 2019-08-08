@@ -27,15 +27,6 @@ public class Hand {
             }
         }
         return index;
-
-//        for (Object cardOnHand :
-//                deck) {
-//            if (cardOnHand.equals(cardOnStack)) {
-//                System.out.println(cardOnHand + " matches with " + cardOnStack);
-//                return deck.indexOf(cardOnHand) + 1;
-//            }
-//        }
-//        return -1;
     }
 
     public boolean playCardToStack(int cardNumber, Stack stack) {
@@ -59,36 +50,6 @@ public class Hand {
             }
         }
         return true;
-//
-//        try {
-//            Card card = (Card) deck.get(cardNumber - 1);
-//            if (card.equals(stack.peek())) {
-//                stack.deck.add(0, card);
-//                this.deck.remove(cardNumber - 1);
-//
-//                System.out.println(card + " was played");
-////                return true;
-//            }
-//        } catch (IndexOutOfBoundsException e) {
-//            System.out.println("No card played");
-//            return false;
-//        }
-//
-//        return true;
-        // * * *
-//        try {
-//            Card card = (Card) deck.get(cardIndex);
-//            if (!card.equals(stack.peek())) {
-//                return false;
-//            } else {
-//                stack.deck.add(0, card);
-//                this.deck.remove(card);
-//                return true;
-//            }
-//        } catch(IndexOutOfBoundsException e) {
-//            // add card to hand
-//            return false;
-//        }
     }
 
     public int size() {

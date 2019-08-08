@@ -29,12 +29,12 @@ public class Game {
         int numOfPlayers;
         do {
             numOfPlayers = input.nextInt();
-            if (numOfPlayers < 2 || numOfPlayers > 6) {
+            if (numOfPlayers < 2 || numOfPlayers > 5) {
                 System.out.println();
-                System.out.println("Number of players has to be between 2 and 6.");
+                System.out.println("Number of players has to be between 2 and 5.");
                 System.out.print("How many players are playing this game? ");
             }
-        } while(numOfPlayers < 2 || numOfPlayers > 6);
+        } while(numOfPlayers < 2 || numOfPlayers > 5);
 
         System.out.println();
         input.nextLine(); // consumes the return character
