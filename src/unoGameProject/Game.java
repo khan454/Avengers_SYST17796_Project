@@ -115,8 +115,7 @@ public class Game {
      *
      */
     public void dealCards() {
-        for (Player player :
-                players) {
+        for (Player player : players) {
             for (int i = 0; i < 7; i++) {
                 player.getHand().add(stack.pop());
             }

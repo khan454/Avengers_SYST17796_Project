@@ -44,7 +44,7 @@ public class HandTest {
      */
     @Test
     public void testMatchWithGoodColour() {
-        System.out.println("matchWith Good");
+        System.out.println("matchWith Good Colour");
         Card cardOnStack = new Card(Card.Color.RED, Card.Value.ONE);
         
         Card c1 = new Card(Card.Color.RED, Card.Value.TWO);
@@ -65,7 +65,7 @@ public class HandTest {
     
     @Test
     public void testMatchWithGoodNumber() {
-        System.out.println("matchWith Good");
+        System.out.println("matchWith Good Number");
         Card cardOnStack = new Card(Card.Color.RED, Card.Value.ONE);
         
         Card c1 = new Card(Card.Color.YELLOW, Card.Value.ONE);
@@ -252,8 +252,8 @@ public class HandTest {
      * Test of playCardToStack method, of class Hand (Boundary).
      */
     @Test
-    public void testPlayCardToStackBounderyUpper() {
-        System.out.println("playCardToStack Good Index");
+    public void testPlayCardToStackBoundaryUpper() {
+        System.out.println("playCardToStack Boundary Upper");
         
         Card c1 = new Card(Card.Color.YELLOW, Card.Value.ONE);
         Card c2 = new Card(Card.Color.GREEN, Card.Value.TWO);
