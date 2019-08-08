@@ -51,6 +51,11 @@ public class Hand {
                 this.deck.remove(cardNumber - 1);
 
                 System.out.println(card + " was played");
+            } else {
+                Card newCard = stack.tail();
+                deck.add(0, newCard);
+                System.out.println("No card played. " + newCard + " was picked from stack.");
+                return false;
             }
         }
         return true;
