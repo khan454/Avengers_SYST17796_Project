@@ -17,35 +17,73 @@ public class Hand {
         return output + deck;
     }
 
-    /***
-     *
-     * @param card
-     * @return index of the card in the deck;
-     *         returns -1 if card doesn't exist
-     */
     public int matchWith(Card cardOnStack) {
-        for (Object cardOnHand :
-                deck) {
-            if (cardOnHand.equals(cardOnStack)) return deck.indexOf(cardOnHand);
+        int index = 0;
+        for (int i = 0; i < deck.size(); i++) {
+            if (deck.get(i).equals(cardOnStack)) {
+                System.out.println(deck.get(i) + " matches with " + cardOnStack);
+                index = i + 1;
+                break;
+            }
         }
-        return -1;
+        return index;
+
+//        for (Object cardOnHand :
+//                deck) {
+//            if (cardOnHand.equals(cardOnStack)) {
+//                System.out.println(cardOnHand + " matches with " + cardOnStack);
+//                return deck.indexOf(cardOnHand) + 1;
+//            }
+//        }
+//        return -1;
     }
 
     public boolean playCardToStack(int cardNumber, Stack stack) {
-        int cardIndex = cardNumber - 1;
-        Card card = (Card) deck.get(cardIndex);
-
-        if (!card.equals(stack.peek())) {
-            cardIndex = -1;
-        }
-
-        if (cardIndex == -1) {
+        if (cardNumber < 1 || cardNumber > deck.size()) {
+            Card newCard = stack.tail();
+            deck.add(0, newCard);
+            System.out.println("No card played. " + newCard + " was picked from stack.");
             return false;
         } else {
-            stack.deck.add(0, card);
-            this.deck.remove(card);
-            return true;
+            Card card = (Card) deck.get(cardNumber - 1);
+            if (card.equals(stack.peek())) {
+                stack.deck.add(0, card);
+                this.deck.remove(cardNumber - 1);
+
+                System.out.println(card + " was played");
+            }
         }
+        return true;
+//
+//        try {
+//            Card card = (Card) deck.get(cardNumber - 1);
+//            if (card.equals(stack.peek())) {
+//                stack.deck.add(0, card);
+//                this.deck.remove(cardNumber - 1);
+//
+//                System.out.println(card + " was played");
+////                return true;
+//            }
+//        } catch (IndexOutOfBoundsException e) {
+//            System.out.println("No card played");
+//            return false;
+//        }
+//
+//        return true;
+        // * * *
+//        try {
+//            Card card = (Card) deck.get(cardIndex);
+//            if (!card.equals(stack.peek())) {
+//                return false;
+//            } else {
+//                stack.deck.add(0, card);
+//                this.deck.remove(card);
+//                return true;
+//            }
+//        } catch(IndexOutOfBoundsException e) {
+//            // add card to hand
+//            return false;
+//        }
     }
 
     public int size() {

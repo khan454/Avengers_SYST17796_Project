@@ -56,50 +56,79 @@ public class Game {
         stack.createStack(); // create initial deck
 
         Collections.shuffle(stack.deck); // shuffle the deck
-//        System.out.println("Stack: " + stack);
 
         dealCards(); // deal the cards to the players
-//        System.out.println(stack.deck);
 
         boolean cardPlayed;
         int cardIndex, playerIndex = 0;
         Scanner input = new Scanner(System.in);
 
+        System.out.println(stack.peek());
         do {
+            cardPlayed = false;
             Player currentPlayer = players.get(playerIndex);
+            System.out.println(currentPlayer.getHand() + " ==> " + stack.peek());
+
             if (playerIndex == 0) {
-                System.out.println(stack.peek());
-                System.out.println(currentPlayer.getHand());
-
-                // ask for card
-                System.out.print("Pick a card by the corresponding number: ");
-                cardIndex = input.nextInt();
-//                System.out.println("Card Index: " + cardIndex);
+                cardIndex = input.nextInt(); input.nextLine();
+                System.out.println("Your card index: " + cardIndex);
             } else {
-                System.out.println(stack.peek());
-                System.out.println(currentPlayer.getHand());
-
-                System.out.println("Player turn");
-                input.nextLine();
-                // play one of the other players
                 cardIndex = currentPlayer.getHand().matchWith(stack.peek());
+                System.out.println(currentPlayer.getName() + "'s card index: " + cardIndex);
             }
-
             cardPlayed = currentPlayer.getHand().playCardToStack(cardIndex, stack);
-            if (!cardPlayed) {
-                currentPlayer.getHand().add(stack.tail());
-            }
 
-            // check if hand is empty
             if (currentPlayer.isHandEmpty()) {
                 gameover = true;
-                showWinner(currentPlayer, playerIndex);
+                System.out.println(currentPlayer.getName() + " wins!");
                 break;
-            } else {
-                playerIndex++;
-                playerIndex %= players.size();
             }
-        } while (!gameover);
+            playerIndex++;
+            playerIndex %= players.size();
+        } while(!gameover);
+
+//        do {
+//            Player currentPlayer = players.get(playerIndex);
+////            System.out.println("Stack: " + stack);
+//            if (playerIndex == 0) {
+//                System.out.println("Top card: " + stack.peek());
+//                System.out.println(currentPlayer.getHand()); // user hand
+//
+//                // ask for card
+//                System.out.print("Pick a card by the corresponding number: ");
+//                cardIndex = input.nextInt(); input.nextLine();
+//            } else {
+//                System.out.println(stack.peek());
+//                System.out.println(currentPlayer.getHand());
+//
+////                System.out.println("Player turn");
+//
+//                // play one of the other players
+//                cardIndex = currentPlayer.getHand().matchWith(stack.peek());
+////                System.out.println("Card index for NPC: " + cardIndex);
+//            }
+//
+//            cardPlayed = currentPlayer.getHand().playCardToStack(cardIndex, stack);
+////            System.out.println(cardPlayed);
+////            System.out.println("Stack: " + stack);
+//
+//            if (!cardPlayed) {
+//                currentPlayer.getHand().add(stack.tail());
+//            }
+//            cardPlayed = false;
+////            System.out.println(cardPlayed);
+//
+//            // check if hand is empty
+//            if (currentPlayer.isHandEmpty()) {
+//                gameover = true;
+//                showWinner(currentPlayer, playerIndex);
+//                break;
+//            } else {
+//                playerIndex++;
+//                playerIndex %= players.size();
+//            }
+//            System.out.println("=====");
+//        } while (!gameover);
     }
 
     public void showWinner(Player player, int index) {
