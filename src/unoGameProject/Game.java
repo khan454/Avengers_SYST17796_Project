@@ -82,11 +82,15 @@ public class Game {
         int cardIndex, playerIndex = 0;
         Scanner input = new Scanner(System.in);
 
-        System.out.println(stack.peek());
+        //System.out.println(stack.peek());
         do {
             cardPlayed = false;
             Player currentPlayer = players.get(playerIndex);
+            System.out.println();
+            System.out.println(currentPlayer.getName());
+            System.out.println("----");
             System.out.println(currentPlayer.getHand() + " ==> " + stack.peek());
+            System.out.println();
 
             if (playerIndex == 0) {
                 cardIndex = input.nextInt(); input.nextLine();
