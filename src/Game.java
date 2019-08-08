@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
@@ -28,7 +29,13 @@ public class Game {
 
         int numOfPlayers;
         do {
-            numOfPlayers = input.nextInt();
+            try {
+                numOfPlayers = input.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Number of players can only be a digit. 2 has been set by default.");
+                numOfPlayers = 2;
+            }
+
             if (numOfPlayers < 2 || numOfPlayers > 5) {
                 System.out.println();
                 System.out.println("Number of players has to be between 2 and 5.");
@@ -76,6 +83,7 @@ public class Game {
                 cardIndex = currentPlayer.getHand().matchWith(stack.peek());
                 System.out.println(currentPlayer.getName() + "'s card index: " + cardIndex);
             }
+
             cardPlayed = currentPlayer.getHand().playCardToStack(cardIndex, stack);
 
             if (currentPlayer.isHandEmpty()) {
@@ -83,60 +91,10 @@ public class Game {
                 System.out.println(currentPlayer.getName() + " wins!");
                 break;
             }
+
             playerIndex++;
             playerIndex %= players.size();
         } while(!gameover);
-
-//        do {
-//            Player currentPlayer = players.get(playerIndex);
-////            System.out.println("Stack: " + stack);
-//            if (playerIndex == 0) {
-//                System.out.println("Top card: " + stack.peek());
-//                System.out.println(currentPlayer.getHand()); // user hand
-//
-//                // ask for card
-//                System.out.print("Pick a card by the corresponding number: ");
-//                cardIndex = input.nextInt(); input.nextLine();
-//            } else {
-//                System.out.println(stack.peek());
-//                System.out.println(currentPlayer.getHand());
-//
-////                System.out.println("Player turn");
-//
-//                // play one of the other players
-//                cardIndex = currentPlayer.getHand().matchWith(stack.peek());
-////                System.out.println("Card index for NPC: " + cardIndex);
-//            }
-//
-//            cardPlayed = currentPlayer.getHand().playCardToStack(cardIndex, stack);
-////            System.out.println(cardPlayed);
-////            System.out.println("Stack: " + stack);
-//
-//            if (!cardPlayed) {
-//                currentPlayer.getHand().add(stack.tail());
-//            }
-//            cardPlayed = false;
-////            System.out.println(cardPlayed);
-//
-//            // check if hand is empty
-//            if (currentPlayer.isHandEmpty()) {
-//                gameover = true;
-//                showWinner(currentPlayer, playerIndex);
-//                break;
-//            } else {
-//                playerIndex++;
-//                playerIndex %= players.size();
-//            }
-//            System.out.println("=====");
-//        } while (!gameover);
-    }
-
-    public void showWinner(Player player, int index) {
-        if (index == 0) {
-            System.out.println("You won the game!");
-        } else {
-            System.out.println(player.getName() + " won the game!");
-        }
     }
 
     public void dealCards() {
